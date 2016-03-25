@@ -5,34 +5,19 @@
         <h2>Baking Portfolio</h2>
         <hr class="small">
         <div class="row">
-          <div class="col-md-6">
-            <div class="portfolio-item">
-              <a href="#">
-                <img class="img-portfolio img-responsive" src="img/cutFabric.jpg">
-              </a>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="portfolio-item">
-              <a href="#">
-                <img class="img-portfolio img-responsive" src="img/fabric.jpg">
-              </a>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="portfolio-item">
-              <a href="#">
-                <img class="img-portfolio img-responsive" src="img/finalRibbons.jpg">
-              </a>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="portfolio-item">
-              <a href="#">
-                <img class="img-portfolio img-responsive" src="img/SaritSnyder.jpg">
-              </a>
-            </div>
-          </div>
+          {% for file in site.static_files %}
+            {% if file.extname == ".jpg" or file.extname == ".gif" %}
+              {% if file.path contains "bake" %}
+                <div class="col-lg-6">
+                  <div class="portfolio-item">
+                    <a href="#">
+                      <img class="img-portfolio img-responsive" src={{file.path}}>
+                    </a>
+                  </div>
+                </div>
+              {% endif %}
+            {% endif %}
+          {% endfor %}
         </div>
         <!-- /.row (nested) -->
       </div>

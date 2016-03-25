@@ -6,14 +6,16 @@
         <hr class="small">
         <div class="row">
           {% for file in site.static_files %}
-            {% if file.extname == ".jpg" and file.path contains "art" %}
-              <div class="col-lg-6">
-                <div class="portfolio-item">
-                  <a href="#">
-                    <img class="img-portfolio img-responsive" src={{file.path}}>
-                  </a>
+            {% if file.extname == ".jpg" or file.extname == ".gif" %}
+              {% if file.path contains "art" %}
+                <div class="col-lg-6">
+                  <div class="portfolio-item">
+                    <a href="#">
+                      <img class="img-portfolio img-responsive" src={{file.path}}>
+                    </a>
+                  </div>
                 </div>
-              </div>
+              {% endif %}
             {% endif %}
           {% endfor %}
         </div>
